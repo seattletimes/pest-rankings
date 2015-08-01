@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= t.include("partials/_adHead.html") %>
+  </head>
+  <body>
+
+    <responsive-child>
+      <table>
+        <tr>
+          <th>Rank
+          <th>City
+          <th>Rats
+          <th>Mice
+          <th>Other Rodents
+          <th>Roaches
+          <th>Total
+        </tr>
+        <% csv.pests.forEach(function(row) { %>
+          <tr> 
+            <td><%= row.rats_rank %></td>
+            <td><%= row.metro %></td>
+            <td><%= row.rats %></td>
+            <td><%= row.mice %></td>
+            <td><%= row.other %></td>
+            <td><%= row.roaches %></td>
+            <td><%= row.total %></td>
+          </tr>
+        <% }); %>
+      </table>
+    </responsive-child>
+
+    <script src="app.js"></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_adFoot.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>
