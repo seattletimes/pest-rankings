@@ -5,35 +5,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <%= t.include("partials/_adHead.html") %>
   </head>
   <body>
 
-    <responsive-child>
-      <table>
-        <tr>
-          <th>Rank
-          <th>City
-          <th>Rats
-          <th>Mice
-          <th>Other Rodents
-          <th>Roaches
-          <th>Total
-        </tr>
-        <% csv.pests.forEach(function(row) { %>
-          <tr> 
-            <td><%= row.rats_rank %></td>
-            <td><%= row.metro %></td>
-            <td><%= row.rats %></td>
-            <td><%= row.mice %></td>
-            <td><%= row.other %></td>
-            <td><%= row.roaches %></td>
-            <td><%= row.total %></td>
-          </tr>
-        <% }); %>
-      </table>
+    <responsive-child ng-app="pest-rankings" ng-cloak>
+      <div ng-controller="PestController">
+        <div class="title">Rat city</div>
+        <div class="chatter">
+          Despite a high number of reported rat sightings, Seattle’s overall pest infestation rate is low.
+        </div>
+
+        <table class="{{selected.short}}">
+          <thead>
+            <tr>
+              <th class="center">Rank
+              <th>City
+              <th class="sortable center" ng-repeat="header in headers" ng-click="sortTable(header)" ng-class="{other: header.short == 'other_rodents', selected: header == selected}">
+                <img class="icon" src="./assets/{{header.icon}}"></img>
+                {{header.title}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="city in cities | limitTo : 7" class="top" ng-class="{ bold: city.metro == 'Seattle' }"> 
+              <%= t.include("_cells.html", {offset: 1}) %>
+            </tr>
+
+            <tr ng-if="!expanded" class="ellipsis"><td colspan=99>&hellip;</td></tr>
+
+            <tr ng-if="expanded" ng-repeat="city in cities | limitTo : 54 - 14 : 7" ng-class="{ bold: city.metro == 'Seattle' }"> 
+              <%= t.include("_cells.html", {offset: 8}) %>
+            </tr>
+
+            <tr ng-repeat="city in cities | limitTo : 7 : 54 - 7" class="bottom" ng-class="{ bold: city.metro == 'Seattle' }"> 
+              <%= t.include("_cells.html", {offset: 47}) %>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="desktop note">*Unspecified rodents.</div>
+        <div class="mobile note">Note: Unspecified rodents not included in table.</div>
+
+        <div ng-click="expanded = !expanded" class="expand button">
+          <span ng-if="!expanded"><i class="fa fa-angle-double-down"></i> EXPAND</span>
+          <span ng-if="expanded"><i class="fa fa-angle-double-up"></i> COLLAPSE</span>
+        </div>
+
+      </div>
+      <div class="source"><em>Source: American Housing Survey, 2011 & 2013</em></div>
+      <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+
     </responsive-child>
 
+    <script>
+      var pestData = <%= JSON.stringify(csv.pest_data) %>;
+    </script>
     <script src="app.js"></script>
     <% if (json.project.production) { %>
     <%= !json.project.embedded ? t.include("partials/_adFoot.html") : "" %>

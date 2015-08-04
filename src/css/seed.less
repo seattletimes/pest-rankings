@@ -6,3 +6,255 @@
 }
 
 @import "seattletimes";
+
+body {
+  font-family: @df-sans;
+  max-width: 630px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.chatter {
+  font-size: 15px;
+  padding-bottom: 15px;
+  font-family: @df-serif;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+
+.button {
+  background: @df-light-gray;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  margin: auto;
+  width: 90px;
+  margin-top: 10px;
+  color: @df-dark-gray;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background: @df-border-gray;
+    color: @df-charcoal;
+  }
+}
+
+.icon {
+  max-height: 30px;
+  max-width: 70px;
+  display: block;
+  margin: auto;
+  padding-bottom: 5px;
+
+  @media @mobile {
+    max-height: 25px;
+    max-width: 42px;
+  }
+}
+
+table {
+  font-size: 14px;
+  border-collapse: collapse;
+  margin: auto;
+
+  @media @mobile {
+    font-size: 11px;
+  }
+
+  tbody {
+    border-top: 1px solid @df-light-gray;
+    border-bottom: 1px solid @df-light-gray;
+  }
+
+  .other {
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  th {
+    text-transform: uppercase;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 12px;
+    background: white;
+
+    @media @mobile {
+      font-size: 10px;
+      text-align: left;
+    }
+
+    &.selected {
+      background: @df-dark-gray;
+      color: white;
+    }
+
+    &.sortable {
+      cursor: pointer;
+
+      &:hover {
+        background: @df-dark-gray;
+        color: white;
+      }
+    }
+
+    &.up::before, &.down::before {
+      position: absolute;
+      color: #da2128;
+      font-size: 11px;
+      margin-left: -1.3em;
+    }
+    &.up::before {
+      content: "\25B2";
+      padding-top: 0.2em;
+    }
+    &.down::before {
+      content: "\25BC";
+      padding-top: 0.2em;
+    }
+  }
+
+  th, td {
+    padding: 8px 12px;
+
+    @media @mobile {
+      padding: 6px;
+    }
+  }
+
+  tr {
+    &.bold {
+      font-weight: bold;
+    }
+    &.seventh {
+      border-bottom: 1px solid @df-border-gray;
+    }
+    &.fortyeighth {
+      border-top: 1px solid @df-border-gray;
+    }
+    &.top {
+    }
+    &.bottom {
+    }
+    &:nth-child(odd) {
+      background: @df-off-white;
+    }
+  }
+}
+
+.ellipsis {
+  text-align: center;
+  font-weight: bold;
+}
+
+.note {
+  padding-top: 10px;
+  font-size: 12px;
+  width: 522px;
+  margin: auto;
+
+  @media @mobile {
+    width: 300px;
+  }
+
+  &.mobile {
+    display: none;
+    text-align: center;
+
+    @media @mobile {
+      display: block;
+    }
+  }
+
+  &.desktop {
+    text-align: right;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+}
+
+.source, .credit {
+  font-size: 11.5px;
+  color: @df-middle-gray;
+}
+
+.source {
+  padding-top: 15px;
+}
+
+// colors
+
+.rats {
+  tr:nth-child(odd) {
+    td.rats {
+      background: lighten(#427ec0, 35%);
+    }
+  }
+  tr:nth-child(even) {
+    td.rats {
+      background: lighten(#427ec0, 40%);
+    }
+  }
+}
+.mice {
+  tr:nth-child(odd) {
+    td.mice {
+      background: lighten(#fbb157, 22%);
+    }
+  }
+  tr:nth-child(even) {
+    td.mice {
+      background: lighten(#fbb157, 27%);
+    }
+  }
+}
+.roaches {
+  tr:nth-child(odd) {
+    td.roaches {
+      background: lighten(#81a27f, 30%);
+    }
+  }
+  tr:nth-child(even) {
+    td.roaches {
+      background: lighten(#81a27f, 35%);
+    }
+  }
+}
+.other_rodents {
+  tr:nth-child(odd) {
+    td.other {
+      background: lighten(#b57bb5, 30%);
+    }
+  }
+  tr:nth-child(even) {
+    td.other {
+      background: lighten(#b57bb5, 35%);
+    }
+  }
+}
+.total {
+  tr:nth-child(odd) {
+    td.total {
+      background: lighten(#F16567, 24%);
+    }
+  }
+  tr:nth-child(even) {
+    td.total {
+      background: lighten(#F16567, 28%);
+    }
+  }
+}
