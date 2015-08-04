@@ -12,9 +12,9 @@
 
     <responsive-child ng-app="pest-rankings" ng-cloak>
       <div class="outmost" ng-controller="PestController">
-        <div class="title">Rat city</div>
+        <div class="title">Rat City</div>
         <div class="chatter">
-          Despite a high number of reported rat sightings, Seattle’s overall pest infestation rate is low.
+          Despite a high number of reported rat sightings, the overall pest infestation rate in Seattle households is low. To see rankings for other pests, click on the categories below.
         </div>
 
         <table class="{{selected.short}}">
@@ -23,7 +23,7 @@
               <th class="center">Rank
               <th>City
               <th class="sortable center" ng-repeat="header in headers" ng-click="sortTable(header)" ng-class="{other: header.short == 'other_rodents', selected: header == selected}">
-                <img class="icon" src="./assets/{{header.icon}}"></img>
+                <img ng-if="header.icon" class="icon" src="./assets/{{header.icon}}"></img>
                 {{header.title}}
               </th>
             </tr>
@@ -55,8 +55,8 @@
 
         <div class="source"><em>Source: American Housing Survey, 2011 & 2013</em></div>
         <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+        
       </div>
-
     </responsive-child>
 
     <script>

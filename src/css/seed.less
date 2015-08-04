@@ -30,6 +30,10 @@ body {
   padding-bottom: 15px;
   font-family: @df-serif;
   text-align: center;
+
+  @media @mobile {
+    text-align: left;
+  }
 }
 
 .center {
@@ -189,7 +193,7 @@ table {
 
   &.desktop {
     text-align: right;
-    
+
     @media @mobile {
       display: none;
     }

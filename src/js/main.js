@@ -18,7 +18,7 @@ app.controller("PestController", ["$scope", function($scope) {
     { title: "Total", short: "total" }
   ];
 
-  $scope.selected = $scope.headers[4];
+  $scope.selected = $scope.headers[0];
   $scope.expanded = false;
 
   $scope.sortTable = function(header) {
@@ -35,4 +35,5 @@ app.controller("PestController", ["$scope", function($scope) {
       }
     });
   };
+  $scope.sortTable($scope.selected);
 }]);
