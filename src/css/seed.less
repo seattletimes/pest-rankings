@@ -12,6 +12,12 @@ body {
   max-width: 630px;
 }
 
+.outmost {
+  border-top: 1px solid @df-border-gray;
+  border-bottom: 1px solid @df-border-gray;
+  padding: 20px 0;
+}
+
 .title {
   font-weight: bold;
   font-size: 28px;
@@ -40,7 +46,6 @@ body {
   font-weight: bold;
   margin: auto;
   width: 90px;
-  margin-top: 10px;
   color: @df-dark-gray;
   cursor: pointer;
   text-align: center;
@@ -48,6 +53,10 @@ body {
   &:hover {
     background: @df-border-gray;
     color: @df-charcoal;
+  }
+
+  @media @mobile {
+    margin-top: 10px;
   }
 }
 
@@ -180,7 +189,7 @@ table {
 
   &.desktop {
     text-align: right;
-
+    
     @media @mobile {
       display: none;
     }

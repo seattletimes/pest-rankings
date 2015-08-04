@@ -11,7 +11,7 @@
   <body>
 
     <responsive-child ng-app="pest-rankings" ng-cloak>
-      <div ng-controller="PestController">
+      <div class="outmost" ng-controller="PestController">
         <div class="title">Rat city</div>
         <div class="chatter">
           Despite a high number of reported rat sightings, Seattle’s overall pest infestation rate is low.
@@ -40,7 +40,7 @@
             </tr>
 
             <tr ng-repeat="city in cities | limitTo : 7 : 54 - 7" class="bottom" ng-class="{ bold: city.metro == 'Seattle' }"> 
-              <%= t.include("_cells.html", {offset: 47}) %>
+              <%= t.include("_cells.html", {offset: 48}) %>
             </tr>
           </tbody>
         </table>
@@ -53,9 +53,9 @@
           <span ng-if="expanded"><i class="fa fa-angle-double-up"></i> COLLAPSE</span>
         </div>
 
+        <div class="source"><em>Source: American Housing Survey, 2011 & 2013</em></div>
+        <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
       </div>
-      <div class="source"><em>Source: American Housing Survey, 2011 & 2013</em></div>
-      <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
 
     </responsive-child>
 
